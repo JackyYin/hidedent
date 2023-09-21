@@ -43,6 +43,9 @@ $(BPF_PROG): $(BPF_PROG).c $(BPF_PROG).bpf.o
 		-O2 -g -Wall \
 		$< -o $@ -lbpf -lelf -lz
 
+run: $(BPF_PROG)
+	./$(BPF_PROG)
+
 clean:
 	rm -rf $(LIBBPF_OUTPUT_DIR) $(LIBBPF_DIR)
 	rm -rf $(BPFTOOL_OUTPUT_DIR) $(BPFTOOL_DIR)
